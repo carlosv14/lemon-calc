@@ -26,4 +26,5 @@ ${TARGET}_lexer.cpp: ${TARGET}.l
 
 clean:
 	rm -f *.o
-	rm -f calculadoraparser.h calculadoraparser.c calculadoraparser.out
+	rm -f ${TARGET}parser.h ${TARGET}parser.c ${TARGET}parser.out ${TARGET}_lexer.cpp
+	rm -f ${TARGET}
