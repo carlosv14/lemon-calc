@@ -1,3 +1,5 @@
-2+2
-10/5
-8*2
+let x = 8
+let y = 2
+x*y
+let sqr(a) => a*a
+sqr(x)

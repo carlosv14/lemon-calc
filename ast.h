@@ -3,6 +3,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <map>
+#include <list>
+#include <string>
+
+using namespace std;
 
 class Expr{
     public:
@@ -25,6 +30,15 @@ class NumExpr: public Expr{
             this->value = atof(value);
         }
         float value;
+        float eval();
+};
+
+class IdExpr: public Expr{
+    public:
+        IdExpr(string value){
+            this->value = value;
+        }
+        string value;
         float eval();
 };
 
@@ -59,5 +73,33 @@ class DivExpr : public BinaryExpr{
         }
         float eval();
 };
+
+class MethodDefinition{
+    public:
+        MethodDefinition(string id, list<string> params, list<Expr *> expressions){
+            this->id = id;
+            this->params = params;
+            this->expressions = expressions;
+        }       
+
+        string id;
+        list<string> params;
+        list<Expr *> expressions;
+};
+
+class MethodInvocation: public Expr{
+    public:
+        MethodInvocation(string id, list<Expr *> expressions){
+            this->id = id;
+            this->expressions = expressions;
+        }       
+
+        string id;
+        list<Expr *> expressions;
+        float eval();
+};
+
+void addVariable(string id, Expr * value);
+void addMethod(string id, MethodDefinition * value);
 
 #endif
