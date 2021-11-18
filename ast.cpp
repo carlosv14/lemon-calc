@@ -41,10 +41,13 @@ void addMethod(string id, MethodDefinition * md){
 }
 
 float MethodInvocation::eval(){
+    //let sqr(a) =>
+    // sqr(2)
     MethodDefinition * md =methods[this->id];
     list<string>::iterator it = md->params.begin();
     list<Expr *>::iterator exprIt = this->expressions.begin();
     while(it != md->params.end()){
+        //a = 2
         addVariable((*it).c_str(), (*exprIt));
         it++;
         exprIt++;
